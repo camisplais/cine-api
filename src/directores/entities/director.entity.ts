@@ -3,13 +3,13 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
+  type Relation,
 } from 'typeorm';
 
 import { Pelicula } from '../../peliculas/entities/pelicula.entity.js';
 
 @Entity('directores')
 export class Director {
-
   @PrimaryGeneratedColumn({ name: 'IDDirector' })
   idDirector: number;
 
@@ -21,5 +21,5 @@ export class Director {
   director: string;
 
   @OneToMany(() => Pelicula, (pelicula) => pelicula.director)
-  peliculas: Pelicula[];
+  peliculas: Relation<Pelicula[]>;
 }

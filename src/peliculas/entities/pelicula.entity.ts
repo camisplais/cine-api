@@ -1,10 +1,10 @@
-
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
   JoinColumn,
+  type Relation,
 } from 'typeorm';
 
 import { Director } from '../../directores/entities/director.entity.js';
@@ -12,7 +12,6 @@ import { Categoria } from '../../categorias/entities/categoria.entity.js';
 
 @Entity('peliculas')
 export class Pelicula {
-
   @PrimaryGeneratedColumn({ name: 'Identificador' })
   identificador: number;
 
@@ -39,7 +38,7 @@ export class Pelicula {
     nullable: false,
   })
   @JoinColumn({ name: 'IDDirector', referencedColumnName: 'idDirector' })
-  director: Director;
+  director: Relation<Director>;
 
   @ManyToOne(() => Categoria, (categoria) => categoria.peliculas, {
     nullable: false,
@@ -48,5 +47,5 @@ export class Pelicula {
     name: 'IDCategoria',
     referencedColumnName: 'identificador',
   })
-  categoria: Categoria;
+  categoria: Relation<Categoria>;
 }

@@ -1,6 +1,5 @@
-
 import { DataSourceOptions } from 'typeorm';
-import { Pelicula } from '../peliculas/entities/pelicula.entity.js';    
+import { Pelicula } from '../peliculas/entities/pelicula.entity.js';
 import { Director } from '../directores/entities/director.entity.js';
 import { Categoria } from '../categorias/entities/categoria.entity.js';
 
@@ -13,7 +12,7 @@ export const getDatabaseConfig = (): DataSourceOptions => ({
   database: process.env.DB_DATABASE || 'cine',
 
   entities: [Pelicula, Director, Categoria],
-  
+
   synchronize: false,
   migrationsRun: false,
 });
